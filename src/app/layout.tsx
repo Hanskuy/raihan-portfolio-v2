@@ -4,7 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: "Raihan Nur Ramadhan Sundana | Software Developer & Cybersecurity",
   description:
     "Portfolio of Raihan Nur Ramadhan Sundana, a Computer Engineering graduate from Telkom University with experience in full stack development, cybersecurity, malware analysis, and machine learning.",
