@@ -1,0 +1,244 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --page: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #e9edf3;
+  --ink: #111827;
+  --muted: #536071;
+  --line: #cdd4de;
+  --accent: #2457d6;
+  --accent-strong: #173fa8;
+  --accent-soft: #dbe6ff;
+  --danger: #b42318;
+  --success: #14734a;
+  --header: rgb(244 245 247 / 88%);
+  color-scheme: light;
+}
+
+.dark {
+  --page: #111318;
+  --surface: #191d24;
+  --surface-2: #232a34;
+  --ink: #edf1f7;
+  --muted: #abb6c5;
+  --line: #39424f;
+  --accent: #8eaeff;
+  --accent-strong: #b6c9ff;
+  --accent-soft: #23345f;
+  --danger: #ff9b8f;
+  --success: #7fd6ae;
+  --header: rgb(17 19 24 / 88%);
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  scrollbar-color: var(--muted) var(--page);
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+a,
+button,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 0.08em;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+a[href] {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--page);
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid var(--page);
+  border-radius: 999px;
+  background: var(--muted);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.font-mono {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+.site-shell {
+  width: min(100% - 2rem, 82rem);
+  margin-inline: auto;
+}
+
+.section-pad {
+  padding-block: clamp(5rem, 9vw, 8.5rem);
+}
+
+.section-pad-compact {
+  padding-block: clamp(4.35rem, 7.8vw, 7.4rem);
+}
+
+.display-title {
+  max-width: 15ch;
+  font-size: clamp(3.25rem, 5vw, 4.5rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+.section-title {
+  max-width: 16ch;
+  font-size: clamp(2.25rem, 5vw, 4.35rem);
+  font-weight: 640;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.body-copy {
+  max-width: 65ch;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.16rem);
+  line-height: 1.7;
+}
+
+.link-line {
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.link-line:hover {
+  color: var(--accent-strong);
+  text-decoration-color: currentColor;
+}
+
+.button-primary,
+.button-secondary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  padding: 0.72rem 1.12rem;
+  font-weight: 620;
+  white-space: nowrap;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease,
+    transform 120ms ease;
+}
+
+.button-primary {
+  border: 1px solid var(--accent-strong);
+  background: var(--accent-strong);
+  color: #f8fbff;
+}
+
+.dark .button-primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #10141c;
+}
+
+.button-primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.button-secondary {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.button-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+.button-primary:active,
+.button-secondary:active {
+  transform: scale(0.98);
+}
+
+.technical-flow {
+  max-width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+@media (max-width: 767px) {
+  .site-shell {
+    width: min(100% - 1.25rem, 82rem);
+  }
+
+  .section-pad {
+    padding-block: 4.5rem;
+  }
+
+  .section-pad-compact {
+    padding-block: 3.9rem;
+  }
+
+  .display-title {
+    font-size: clamp(2.85rem, 14vw, 4.35rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
