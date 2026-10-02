@@ -6,4 +6,4 @@
 
 `malware-dataset-pipeline.png` is a readability crop of Figure 1, “Dataset construction pipeline overview,” from the supplied EECSI 2026 conference paper.
 
-Only authentic supplied or paper-derived visual evidence is included in this directory.
+Work and profile photographs remain authentic supplied or paper-derived evidence. The `toolkit/` subdirectory contains third-party technology logos; its README records their sources.

@@ -1,4 +1,32 @@
 import { skillGroups } from "@/data/portfolio";
+import { Brain, Bug, Database, GitBranch, Network, ShieldCheck, Table } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
+
+const logos: Record<string, string> = {
+  Python: "python.svg",
+  PHP: "php.svg",
+  JavaScript: "javascript.svg",
+  TypeScript: "typescript.svg",
+  "Next.js": "nextjs.svg",
+  HTML: "html5.svg",
+  CSS: "css3.svg",
+  CodeIgniter: "codeigniter.svg",
+  MySQL: "mysql.svg",
+  Git: "git.svg",
+  Linux: "linux.svg",
+  "Cuckoo3 Sandbox": "cuckoo3.png",
+  XGBoost: "xgboost.png",
+};
+
+const fieldIcons: Record<string, typeof Database> = {
+  SQL: Database,
+  "Computer Networking": Network,
+  Cybersecurity: ShieldCheck,
+  "Malware Analysis": Bug,
+  DevSecOps: GitBranch,
+  "Machine Learning": Brain,
+  "Data Preparation": Table,
+};
 
 export function Skills() {
   return (
@@ -14,11 +42,28 @@ export function Skills() {
             <div key={group.label} className="border-t border-[var(--ink)] pt-5">
               <h3 className="font-mono text-sm font-medium text-[var(--muted)]">{group.label}</h3>
               <ul className="mt-5 space-y-2.5">
-                {group.items.map((item) => (
-                  <li key={item} className="text-sm font-medium leading-relaxed sm:text-base">
-                    {item}
-                  </li>
-                ))}
+                {group.items.map((item) => {
+                  const logo = logos[item];
+                  const Icon = fieldIcons[item];
+
+                  return (
+                    <li key={item} className="flex min-w-0 items-center gap-3 text-sm font-medium leading-relaxed sm:text-base">
+                      {logo ? (
+                        <Image
+                          src={"/images/toolkit/" + logo}
+                          alt=""
+                          aria-hidden="true"
+                          width={28}
+                          height={28}
+                          className={"h-7 w-7 shrink-0 object-contain" + (item === "Next.js" ? " rounded-full bg-white" : "")}
+                        />
+                      ) : Icon ? (
+                        <Icon size={28} className="shrink-0 text-[var(--muted)]" aria-hidden="true" />
+                      ) : null}
+                      <span className="min-w-0">{item}</span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
